@@ -1,4 +1,4 @@
-# Writher — Designing Environment as a Medium for Creativity
+# Writher - Designing Environment as a Medium for Creativity
 
 Writher is an immersive writing platform that rethinks the relationship between environment and cognition.  
 It is built on the idea that creative output is not only driven by tools, but by the state of mind shaped through sensory context.
