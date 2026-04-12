@@ -142,7 +142,7 @@ export default function App() {
 
   // UI Auto-hide Logic
   useEffect(() => {
-    if (isBottomHovered) {
+    if (isBottomHovered || isMenuOpen) {
       setIsUIActive(true);
     } else {
       const timer = setTimeout(() => {
@@ -153,7 +153,7 @@ export default function App() {
       }, 500);
       return () => clearTimeout(timer);
     }
-  }, [isBottomHovered]);
+  }, [isBottomHovered, isMenuOpen]);
 
   // Timer Logic
   useEffect(() => {
@@ -404,14 +404,14 @@ export default function App() {
       {/* Background Shader */}
       <ShaderCanvas mode={mode} blur={blur} intensity={intensity} backgroundImageUrl={backgroundImageUrl} backgroundMode={backgroundMode} />
 
-      {/* Top Mode Switcher (Visible on hover) */}
+      {/* Top Mode Switcher (Visible on hover or when menu is open) */}
       <div 
         className="fixed top-0 left-0 w-full h-20 z-50 flex justify-center items-start pt-4"
         onMouseEnter={() => setIsTopHovered(true)}
         onMouseLeave={() => setIsTopHovered(false)}
       >
         <AnimatePresence>
-          {isTopHovered && (
+          {(isTopHovered || isMenuOpen) && (
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
